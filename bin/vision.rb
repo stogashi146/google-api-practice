@@ -19,7 +19,7 @@ module Vision
           },
           features: [
             {
-              type: 'SAFE_SEARCH_DETECTION'
+              type: 'LABEL_DETECTION'
             }
           ]
         }]
@@ -37,7 +37,7 @@ module Vision
       if (error = response_body['responses'][0]['error']).present?
         raise error['message']
       else
-        response_body['responses'][0]["safeSearchAnnotation"].slice("adult","violence","racy")
+        response_body['responses'][0]['labelAnnotations'].pluck('description').take(3)
       end
     end
   end

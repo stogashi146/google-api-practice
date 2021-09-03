@@ -9,7 +9,9 @@ class TodolistsController < ApplicationController
     list.save
     tags = Vision.get_image_data(list.image)
     tags.each do |tag|
-      list.tags.create(name: tag)
+      if tag[1].start_with?('POSSIBLE', 'LIKELY', 'VERY_LIKELY')
+        list.tags.create(name: tag[0])
+      end
     end
     redirect_to todolist_path(list.id)
   end
