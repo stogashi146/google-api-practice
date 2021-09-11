@@ -1,4 +1,2 @@
 # README
-sample_appにRails 10章を加えたものにAI用の編集を加えたもの
-
-これをテンプレートにする
+- Google Natural Language API、Google Vision APIの検証
